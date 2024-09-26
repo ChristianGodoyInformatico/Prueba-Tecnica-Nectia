@@ -24,6 +24,11 @@ El proyecto consta de las 3 partes fundamentales para un proyecto base.
     flutter build apk --release
     ```
 
+    de todas formas el APK ya se encuentra generado y listo para su descarga en el siguiente link:
+    ```
+    https://drive.google.com/file/d/1OFVyBuztL9n2idMxHZxYL2ypGWlhEVQz/view?usp=drive_link
+    ```
+
 2.- Backend
 
     El Backend ha sido desarrollado con el framework de NestJS, dicho desarrollo se encuentro desplegado en la nube bajo el servicio de EC2
