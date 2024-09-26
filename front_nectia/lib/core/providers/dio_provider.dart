@@ -6,7 +6,8 @@ import 'package:front_nectia/features/auth/interceptors/auth_interceptor.dart';
 final dioProvider = Provider<Dio>((ref) {
   final dio = Dio(
     BaseOptions(
-      baseUrl: 'http://10.0.2.2:3000/api', // TODO Reemplaza con URL base
+      // baseUrl: 'http://10.0.2.2:3000/api', // TODO Reemplaza con URL base
+      baseUrl:'http://18.191.43.23:3000/api',
       connectTimeout: const Duration(seconds: 5),
       receiveTimeout: const Duration(seconds: 5),
     ),
