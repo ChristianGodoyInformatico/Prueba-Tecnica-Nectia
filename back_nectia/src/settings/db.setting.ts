@@ -15,9 +15,12 @@ export const typeOrmModule = (configService: ConfigService): DataSourceOptions =
       host: configService.get<string>('DB_HOST'),
       port: configService.get<number>('DB_PORT'),
       username: configService.get<string>('DB_USERNAME'),
-      password: dbPassword, // Aquí verificamos la contraseña
+      password: dbPassword,
       database: configService.get<string>('DB_NAME'),
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      synchronize: true, // do not set it true in production application
+      synchronize: false, // do not set it true in production application
+      ssl: {
+        rejectUnauthorized: false
+      }
     };
   };
