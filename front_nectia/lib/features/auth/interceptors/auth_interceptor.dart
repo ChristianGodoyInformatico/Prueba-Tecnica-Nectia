@@ -21,9 +21,6 @@ class AuthInterceptor extends Interceptor {
 
       if (token != null && token.isNotEmpty) {
         options.headers['Authorization'] = 'Bearer $token';
-      } else {
-        // Opcional: Manejar el caso en que no hay token disponible
-        // Por ejemplo, lanzar una excepción o redirigir al login
       }
     }
 

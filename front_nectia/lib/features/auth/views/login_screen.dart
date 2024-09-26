@@ -38,8 +38,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     // Usar ref de manera segura
     final authState = ref.read(authProvider);
 
-    print("que courre aqui");
-
     if (authState.errorMessage != null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: ${authState.errorMessage}')),
@@ -47,8 +45,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     } else if (authState.user != null) {
       // Navegar a la pantalla principal
       context.go('/vehicles');
-    } else {
-      print('Ni errorMessage ni user están establecidos. Algo salió mal.');
     }
   }
 

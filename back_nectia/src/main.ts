@@ -8,12 +8,11 @@ async function bootstrap() {
   const logger = new Logger('Bootstrap');
   app.setGlobalPrefix('api');
 
-  // Usar ValidationPipe globalmente con opciones personalizadas
   app.useGlobalPipes(new ValidationPipe({
-    whitelist: true, // Elimina propiedades no especificadas en el DTO
-    forbidNonWhitelisted: true, // Lanzará un error si se envían propiedades no permitidas
-    transform: true, // Transforma automáticamente los tipos de datos
-    errorHttpStatusCode: 422, // Cambia el código de estado para errores de validación
+    whitelist: true, 
+    forbidNonWhitelisted: true, 
+    transform: true, 
+    errorHttpStatusCode: 422,
   }));
 
   await app.listen(process.env.PORT);

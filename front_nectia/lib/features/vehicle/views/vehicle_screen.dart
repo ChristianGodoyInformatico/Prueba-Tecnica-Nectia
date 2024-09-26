@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:front_nectia/features/vehicle/views/add_vehicle_screen.dart';
-import 'package:front_nectia/features/vehicle/views/edit_vehicle_screen.dart';
-import 'package:front_nectia/features/vehicle/views/vehicle_data_source.dart';
+import 'package:front_nectia/features/views.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import '../models/vehicle_model.dart';
 import '../providers/vehicle_provider.dart';
 
 class VehiclesScreen extends ConsumerStatefulWidget {
-  const VehiclesScreen({Key? key}) : super(key: key);
+  const VehiclesScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _VehiclesScreenState createState() => _VehiclesScreenState();
 }
 
@@ -38,7 +37,6 @@ class _VehiclesScreenState extends ConsumerState<VehiclesScreen> {
       searchQuery: _searchQuery,
     );
 
-    // Agregar listener para actualizar la UI cuando los datos cambien
     _vehicleDataSource.addListener(_updateUI);
   }
 
@@ -49,7 +47,6 @@ class _VehiclesScreenState extends ConsumerState<VehiclesScreen> {
   }
 
   void _onSearch() {
-    // Remover el listener del data source anterior
     _vehicleDataSource.removeListener(_updateUI);
 
     setState(() {
@@ -60,7 +57,6 @@ class _VehiclesScreenState extends ConsumerState<VehiclesScreen> {
   }
 
   void _onRowsPerPageChanged(int? rowsPerPage) {
-    // Remover el listener del data source anterior
     _vehicleDataSource.removeListener(_updateUI);
 
     setState(() {
@@ -78,8 +74,7 @@ class _VehiclesScreenState extends ConsumerState<VehiclesScreen> {
       ),
     )
         .then((_) {
-      // Esto se ejecutará al regresar de la pantalla de edición
-      _initializeDataSource(); // Recargar datos
+      _initializeDataSource();
     });
   }
 
@@ -112,6 +107,7 @@ class _VehiclesScreenState extends ConsumerState<VehiclesScreen> {
       await _vehicleRepository.deleteVehicle(vehicleId);
       _initializeDataSource(); // Recargar los datos después de eliminar
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('Error al eliminar: $e')));
     }
@@ -137,12 +133,10 @@ class _VehiclesScreenState extends ConsumerState<VehiclesScreen> {
       ),
       body: Column(
         children: [
-          // Barra de búsqueda y botón "Nuevo"
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                // Campo de búsqueda
                 Expanded(
                   flex: 2,
                   child: TextField(
@@ -158,19 +152,17 @@ class _VehiclesScreenState extends ConsumerState<VehiclesScreen> {
                   ),
                 ),
                 const SizedBox(width: 8.0),
-                // Botón "Nuevo"
                 Expanded(
                   flex: 1,
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      // Navegar a la pantalla de creación de vehículo
                       Navigator.of(context)
                           .push(
                         MaterialPageRoute(
                             builder: (context) => const AddVehicleScreen()),
                       )
                           .then((_) {
-                        _initializeDataSource(); // Recargar datos
+                        _initializeDataSource();
                       });
                     },
                     icon: const Icon(Icons.add),
@@ -227,7 +219,6 @@ class _VehiclesScreenState extends ConsumerState<VehiclesScreen> {
     DataGridSortDirection newDirection;
 
     if (currentSortColumn != null && currentSortColumn.name == columnName) {
-      // Toggle sort direction
       newDirection =
           currentSortColumn.sortDirection == DataGridSortDirection.ascending
               ? DataGridSortDirection.descending

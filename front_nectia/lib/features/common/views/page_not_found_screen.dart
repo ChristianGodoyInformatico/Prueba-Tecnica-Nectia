@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class PageNotFoundScreen extends StatelessWidget {
-  const PageNotFoundScreen({Key? key, required this.route}) : super(key: key);
+  const PageNotFoundScreen({super.key, required this.route});
 
   final String route;
 

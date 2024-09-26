@@ -15,7 +15,6 @@ export class VehiclesService {
     @InjectRepository(Vehicle)
     private readonly vehicleRepository: Repository<Vehicle>,
 
-    // private readonly dataSource: DataSource
   ) { }
 
   async create(createVehicleDto: CreateVehicleDto): Promise<Vehicle> {
@@ -70,7 +69,7 @@ export class VehiclesService {
   async update(id: string, updateVehicleDto: UpdateVehicleDto) {
     try {
       const vehicle = await this.vehicleRepository.preload({
-        id, // Aseguramos que estamos actualizando el objeto con este ID
+        id, 
         ...updateVehicleDto,
       });
 
@@ -78,7 +77,7 @@ export class VehiclesService {
         throw new NotFoundException(`Torneo con el ID ${id} no encontrado`);
       }
 
-      return this.vehicleRepository.save(vehicle); // Devuelve el objeto actualizado
+      return this.vehicleRepository.save(vehicle);
     } catch (error) {
       this.handleDBExceptions(error);
     }

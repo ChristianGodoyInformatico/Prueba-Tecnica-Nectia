@@ -1,4 +1,3 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 import { DataSourceOptions } from 'typeorm';
 
@@ -18,7 +17,7 @@ export const typeOrmModule = (configService: ConfigService): DataSourceOptions =
       password: dbPassword,
       database: configService.get<string>('DB_NAME'),
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      synchronize: false, // do not set it true in production application
+      synchronize: false,
       ssl: {
         rejectUnauthorized: false
       }

@@ -11,10 +11,9 @@ import { CommonModule } from './common/common.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, // Hace que las variables de entorno estén disponibles globalmente
+      isGlobal: true, 
     }),
     
-    // Configuracion de conexion con BD Postgres
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

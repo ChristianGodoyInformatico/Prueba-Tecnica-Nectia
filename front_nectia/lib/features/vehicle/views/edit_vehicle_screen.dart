@@ -8,9 +8,10 @@ import '../providers/vehicle_provider.dart';
 class EditVehicleScreen extends ConsumerStatefulWidget {
   final VehicleModel vehicle;
 
-  const EditVehicleScreen({Key? key, required this.vehicle}) : super(key: key);
+  const EditVehicleScreen({super.key, required this.vehicle});
 
   @override
+  // ignore: library_private_types_in_public_api
   _EditVehicleScreenState createState() => _EditVehicleScreenState();
 }
 

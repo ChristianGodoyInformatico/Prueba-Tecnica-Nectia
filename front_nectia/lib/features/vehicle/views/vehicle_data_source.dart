@@ -14,7 +14,6 @@ class VehicleDataSource extends DataGridSource {
   int _totalRecords = 0;
   List<VehicleModel> _vehicles = [];
 
-  // Sorting fields
   String? _sortColumn;
   DataGridSortDirection? _sortDirection;
 
@@ -79,14 +78,10 @@ class VehicleDataSource extends DataGridSource {
     return true;
   }
 
-  // Override this method to handle sorting
   @override
   void sort() {
-    print("aplicando el sorting!!!!");
-    // Clear existing sort descriptors
     sortedColumns.clear();
 
-    // Add the new sort descriptor
     if (_sortColumn != null && _sortDirection != null) {
       sortedColumns.add(
         SortColumnDetails(
@@ -96,12 +91,10 @@ class VehicleDataSource extends DataGridSource {
       );
     }
 
-    // Reload data with new sorting
-    _currentPage = 1; // Reset to first page
+    _currentPage = 1;
     _loadData();
   }
 
-    // Method to update sorting parameters
   void updateSorting(String columnName, DataGridSortDirection direction) {
     _sortColumn = columnName;
     _sortDirection = direction;

@@ -1,9 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart';
 import '../models/vehicle_model.dart';
-import '../../../core/providers/dio_provider.dart'; // Ajusta la ruta según tu estructura de archivos
+import '../../../core/providers/dio_provider.dart';
 
-// Clase que contiene la lista de vehículos y el total de registros
 class VehiclesData {
   final List<VehicleModel> vehicles;
   final int totalRecords;
@@ -38,7 +37,6 @@ class VehicleRepository {
       );
 
       if (response.statusCode == 200) {
-        // Asegúrate de que la respuesta contiene los campos 'data' y 'total'
         final data = response.data['data'] as List;
         final total = response.data['total'] as int;
 
@@ -79,14 +77,11 @@ class VehicleRepository {
   }
 
   Future<void> updateVehicle(String id, VehicleModel vehicle) async {
-    print("el id: $id, el vehiculo: $vehicle");
     try {
       final response = await _dio.patch(
         '/vehicles/$id',
         data: vehicle.toCreateJson(),
       );
-
-      print("la response: $vehicle");
 
       if (response.statusCode != 200) {
         throw Exception('Error al actualizar el vehículo');
@@ -97,7 +92,6 @@ class VehicleRepository {
   }
 }
 
-// Proveedor para el repositorio de vehículos
 final vehicleRepositoryProvider = Provider<VehicleRepository>((ref) {
   final dio = ref.read(dioProvider);
   return VehicleRepository(dio);
