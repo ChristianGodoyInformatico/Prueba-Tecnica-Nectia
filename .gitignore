@@ -1,0 +1,88 @@
+# compiled output
+/dist
+/node_modules
+/build
+
+/.history
+/postgres
+
+# /back_nectia
+# /front_nectia
+
+/front_nectia/.history
+/front_nectia/.dart_tool
+/front_nectia/.flutter-plugins
+/front_nectia/.flutter-plugins-dependencies
+/front_nectia/.packages
+/front_nectia/.pub-cache/
+/front_nectia/.pub/
+/front_nectia/
+/front_nectia/build
+
+/front_nectia/app.*.symbols
+/front_nectia/app.*.map.json
+/front_nectia/android/app/debug
+
+/front_nectia/android/app/profile
+/front_nectia/android/app/release
+
+
+back_nectia/dist
+back_nectia/node_modules
+back_nectia/build
+back_nectia/test
+
+
+
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# temp directory
+.temp
+.tmp
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
